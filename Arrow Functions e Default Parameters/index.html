@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-
+scale=1.0">
+
+    <title>Atividade 2 - Arrow Functions e Default Parameters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .output {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Atividade 2 - Arrow Functions e Default Parameters</h1>
+    <button id="btn">Testar Funções</button>
+    <div id="output" class="output"></div>
+    
+
+    <script>
+const btn = document.getElementById("btn");
+const output = document.getElementById("output");
+
+btn.addEventListener("click", () => {
+    //Arrow function
+    const soma = (a, b) => a + b;
+
+    //Default parameter
+    const saudar = (nome="Visitante") => `Olá, ${nome}`;
+
+    let resultado = '';
+    resultado += `Somar 5 + 7 = ${soma(5,7)}\n`;
+    resultado += saudar("trevo") + '\n';
+    resultado += saudar();
+    output.textContent = resultado;
+});
+    </script>
+</body>
+
+</html>

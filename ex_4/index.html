@@ -3,28 +3,70 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Atividade 2 - Validação de E-mail</title>
+    <title>Atividade 1 - Cadastro Simples</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 400px;
-            margin: 40px auto;
-        }
-
         .erro {
             color: red;
             font-size: 0.9em;
+        }
+
+        input.erro {
+            border: 1px solid red;
         }
     </style>
 </head>
 
 <body>
-    <h2>Validação de E-mail</h2>
-    <label for="email">E-mail:</label><br>
-    <input type="text" id="email"><br>
-    <span id="erroEmail" class="erro"></span><br><br>
-    <button id="btnValidar">Validar</button>
-    <script src="script.js"></script>
+    <h1>Cadastro Simples</h1>
+    <form id="formCadastro">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome">
+            <span id="erroNome" class="erro"></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+            <span id="erroEmail" class="erro"></span>
+        </div>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <script>
+
+const form = document.getElementById("formCadastro");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const nome = document.getElementById("nome");
+    const email = document.getElementById("email");
+    let valido = true;
+    //Validar o nome
+    if (!nome.value.trim()) {
+        document.getElementById("erroNome").textContent = "O nome é obrigatório";
+        nome.style.border = "1px solid red";
+        valido = false;
+    } else {
+        document.getElementById("erroNome").textContent = "";
+        nome.style.border = "";
+    }
+    //Validar Email
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim() || !regexEmail.test(email.value)) {
+        document.getElementById("erroEmail").textContent = "Email inválido";
+        email.style.border = "1px solid red";
+        valido = false;
+    } else {
+        document.getElementById("erroEmail").textContent = "";
+        email.style.border = "";
+    }
+    if(valido) {
+        alert("Formulário válido! Cadastro realizado.");
+        form.reset();
+    } else {
+        alert("Corrija os erros antes de enviar");
+    }
+});
+
+</script>
 </body>
 
 </html>
