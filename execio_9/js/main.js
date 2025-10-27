@@ -1,0 +1,1 @@
+const app = new ContadorControlle(new ContadorModel(),new ContadorVeiw());
